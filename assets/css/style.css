@@ -4038,6 +4038,14 @@ textarea.w-select {
     overflow: hidden;
   }
 
+  #Course .xl-outlined-text.text-color-grey {
+    bottom: 235px;
+  }
+
+  #Timetable .padding-large-global.padding-top-large-xl.padding-bottom-medium {
+    padding-top: 2rem;
+  }
+
   .cta.text-small {
     padding: 15px 20px;
   }
@@ -4045,6 +4053,10 @@ textarea.w-select {
   .text-medium.text-color-white {
     font-size: 1.8em;
     line-height: 1.1;
+  }
+
+  #Hero .text-medium.text-color-white {
+    font-size: 1.4em
   }
 
   .text-medium.text-color-grey {
@@ -4128,7 +4140,7 @@ textarea.w-select {
   }
 
   .text-small.text-color-white.service-paragraph-text {
-    font-size: 1.6em;
+    font-size: 1.1em;
   }
 
   .text-small.text-color-white.padding-left-medium {
@@ -4266,11 +4278,12 @@ textarea.w-select {
   .service-heading-and-description {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+    max-width: 100%;
   }
 
   .heading-h3.text-color-white,
   .heading-h3.text-color-purple {
-    font-size: 3.3em;
+    font-size: 2.2em;
   }
 
   .padding-large-global-xl {
@@ -4344,10 +4357,6 @@ textarea.w-select {
     background-position: 50% 0;
     width: 100%;
     height: 400px;
-  }
-
-  .service-heading-and-description {
-    max-width: 325px;
   }
 
   .accordion {
@@ -4821,7 +4830,6 @@ input[type=number]::-webkit-inner-spin-button {
   padding-top: 25px;
   padding-bottom: 25px;
   font-size: 18px;
-  color-scheme: dark;
 }
 
 label {
@@ -5759,6 +5767,14 @@ label {
   .price-card {
     height: 100%;
   }
+
+  .price-card {
+    padding: 20px;
+  }
+
+  .price-card .price-btn-container {
+    margin-top: 30px;
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -5800,27 +5816,41 @@ label {
   }
 
   .large-number-week {
-    font-size: 18rem;
+    font-size: 13rem;
+    position: absolute;
+    top: 10px;
+    right: 8%;
   }
 
   .large-number-week-last br {
     display: none;
   }
 
+  .heading-space {
+    display: block !important;
+  }
+
   .large-number-week-last span {
     width: 100%;
-    font-size: 5.5rem;
+    font-size: 7.5rem;
+    margin: 0 5px;
   }
 
   .large-number-week-last .middle-span {
     font-size: 2rem;
-    position: inherit;
+    position: absolute;
+    top: 25%;
+    left: -4px;
+  }
+
+  #Coach .text-color-purple {
+    font-size: 1.2em !important;
   }
 
   .large-number-week-last {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top: 60px;
+    right: 6%;
   }
 
   .price-card .h3-heading {
@@ -5834,7 +5864,7 @@ label {
 
   .course-week-div h2,
   .course-week-div-last h2 {
-    font-size: 23px;
+    font-size: 20px;
   }
 
   #qr-popup {
@@ -5862,11 +5892,7 @@ label {
   .sitemap-wrapper {
     padding: 15px
   }
-  input[type="date"] {
-    min-width:95.6%;
-    -webkit-appearance : none;
-    min-height: calc(var(--lwc-heightInput,1.875rem) + (1px * 2) + 24px) !important;
-}
+
 }
 
 #Contact .contact-detail-div .contact-icon {
@@ -6232,4 +6258,8 @@ label {
 .sitemap-navigation>.menu-item-has-children>.sub-menu>.menu-item>a:hover {
   background: var(--purple);
   color: #fff
+}
+
+.heading-space {
+  display: none;
 }

@@ -111,14 +111,14 @@ $(document).ready(function () {
 
     // Register Form submission
     document.getElementById('Register-form').addEventListener('submit', function (event) {
-        event.preventDefault(); 
+        event.preventDefault();
 
         const form = event.target;
         const formData = new FormData(form);
 
         const successMessage = document.querySelector('.success-message-register-form');
         const errorMessage = document.querySelector('.fail-message-register-form');
-        const formContainer = document.getElementById('Register-form'); 
+        const formContainer = document.getElementById('Register-form');
 
         successMessage.style.display = 'none';
         errorMessage.style.display = 'none';
@@ -127,19 +127,19 @@ $(document).ready(function () {
             method: 'POST',
             body: formData
         })
-            .then(response => response.json()) 
+            .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    formContainer.style.display = 'none'; 
-                    successMessage.style.display = 'block'; 
+                    formContainer.style.display = 'none';
+                    successMessage.style.display = 'block';
                 } else {
-                    errorMessage.style.display = 'block'; 
+                    errorMessage.style.display = 'block';
                 }
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
-                formContainer.style.display = 'none'; 
-                errorMessage.style.display = 'block'; 
+                formContainer.style.display = 'none';
+                errorMessage.style.display = 'block';
             });
     });
 
@@ -163,16 +163,16 @@ $(document).ready(function () {
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    formContainer.style.display = 'none'; 
+                    formContainer.style.display = 'none';
                     successMessage.style.display = 'block';
                 } else {
-                    errorMessage.style.display = 'block'; 
+                    errorMessage.style.display = 'block';
                 }
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
                 formContainer.style.display = 'none';
-                errorMessage.style.display = 'block'; 
+                errorMessage.style.display = 'block';
             });
     });
 

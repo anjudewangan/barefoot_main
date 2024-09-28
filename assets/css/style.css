@@ -5858,9 +5858,15 @@ label {
   #FAQ {
     padding-top: 20px;
   }
+
   .sitemap-wrapper {
-      padding: 15px
+    padding: 15px
   }
+  input[type="date"] {
+    min-width:95.6%;
+    -webkit-appearance : none;
+    min-height: calc(var(--lwc-heightInput,1.875rem) + (1px * 2) + 24px) !important;
+}
 }
 
 #Contact .contact-detail-div .contact-icon {
@@ -6130,7 +6136,8 @@ label {
   background-image: url('../images/icons/arrow-up.svg');
   transform: rotate(0deg);
 }
-.width-100{
+
+.width-100 {
   width: 100%;
 }
 

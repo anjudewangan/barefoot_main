@@ -2434,8 +2434,9 @@
                                 <input type="hidden" name="form_type" value="register">
                                 <input class="input w-input" maxlength="50" name="FullName" placeholder="Full Name"
                                     type="text" id="Full-Name" required="">
-                                <input class="input w-input" maxlength="3" name="DateofBirth"
-                                    placeholder="Date of Birth" type="date" id="Date" required="">
+                                <input class="input w-input textbox-n" maxlength="3" name="DateofBirth"
+                                    placeholder="Date of Birth" id="Date" required="" type="text"
+                                    onfocus="(this.type='date')" onblur="(this.type='text')">
                                 <input class="input w-input" maxlength="60" name="EmailAddress"
                                     placeholder="Email Address" type="email" id="Email-Address" required="">
                                 <input class="input w-input" maxlength="10" name="ContactNumber"

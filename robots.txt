@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /private/
+Disallow: /tmp/
+
+Allow: /
+
+Sitemap: https://barefoot.org.in/sitemap.xml
+Sitemap: https://barefoot.org.in/sitemap.html

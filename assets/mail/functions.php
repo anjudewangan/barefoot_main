@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
-        $mail->setFrom('barefootraipur@gmail.com', 'Barefoot Raipur'); 
+        $mail->setFrom('barefootraipur@gmail.com', 'Barefoot'); 
         $mail->addAddress('barefootraipur@gmail.com');
 
         if ($formType === 'register') {

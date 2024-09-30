@@ -8,7 +8,6 @@ require 'vendor/autoload.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $formType = $_POST['form_type'];
-
     $mail = new PHPMailer(true);
 
     try {
@@ -16,21 +15,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'barefootraipur@gmail.com'; 
+        $mail->Username   = 'barefootraipur@gmail.com';
         $mail->Password   = 'achwxqozfxhvghdm';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
-        $mail->setFrom('barefootraipur@gmail.com', 'Barefoot'); 
+        $mail->setFrom('barefootraipur@gmail.com', 'Barefoot');
         $mail->addAddress('barefootraipur@gmail.com');
 
+        // Handle registration form submission
         if ($formType === 'register') {
-            $fullName = ucwords(strtolower($_POST['FullName']));
-            $dateOfBirth = $_POST['DateofBirth'];
-            $emailAddress = strtolower($_POST['EmailAddress']);
-            $contactNumber = $_POST['ContactNumber'];
-            $attendClass = ucwords(strtolower($_POST['AttendClass']));
-            $aboutUs = ucwords(strtolower($_POST['AboutUs']));
+            $fullName = ucwords(strtolower(trim($_POST['FullName'])));
+            $age = intval(trim($_POST['Age']));
+            $emailAddress = strtolower(trim($_POST['EmailAddress']));
+            $contactNumber = trim($_POST['ContactNumber']);
+            $location = ucwords(strtolower(trim($_POST['Location'])));
+            $gender = ucwords(strtolower(trim($_POST['Gender'])));
+            $attendClass = ucwords(strtolower(trim($_POST['AttendClass'])));
+            $aboutUs = ucwords(strtolower(trim($_POST['AboutUs'])));
+            $course = ucwords(strtolower(trim($_POST['Course'])));
+            $paymentMethod = ucwords(strtolower(trim($_POST['PaymentMethod'])));
+            $paymentPlan = ucwords(strtolower(trim($_POST['PaymentPlan'])));
 
             $mail->Subject = 'New Registration Form Submission';
             $mail->isHTML(true);
@@ -42,19 +47,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <body>
                     <h2>Registration Details</h2>
                     <p><strong>Full Name:</strong> $fullName</p>
-                    <p><strong>Date of Birth:</strong> $dateOfBirth</p>
+                    <p><strong>Age:</strong> $age</p>
                     <p><strong>Email Address:</strong> $emailAddress</p>
                     <p><strong>Contact Number:</strong> $contactNumber</p>
+                    <p><strong>Location:</strong> $location</p>
+                    <p><strong>Gender:</strong> $gender</p>
                     <p><strong>Have you attended any self-defense classes before?:</strong> $attendClass</p>
                     <p><strong>How did you hear about us?:</strong> $aboutUs</p>
+                      <p><strong>Your Course:</strong> $course</p>
+                    <p><strong>Preferred Payment Method:</strong> $paymentMethod</p>
+                    <p><strong>Payment Plan:</strong> $paymentPlan</p>
                 </body>
                 </html>
             ";
-
-        } elseif ($formType === 'contact') {
-            $fullName = ucwords(strtolower($_POST['FullName-2']));
-            $emailAddress = strtolower($_POST['EmailAddress-2']);
-            $message = $_POST['Message'];
+        }
+        // Handle contact form submission
+        elseif ($formType === 'contact') {
+            $fullName = ucwords(strtolower(trim($_POST['FullName-2'])));
+            $emailAddress = strtolower(trim($_POST['EmailAddress-2']));
+            $message = trim($_POST['Message']);
 
             $mail->Subject = 'Contact Form Submission';
             $mail->isHTML(true);
@@ -79,7 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode(['status' => 'error', 'message' => 'Email not sent.']);
         }
     } catch (Exception $e) {
-        echo json_encode(['status' => 'error', 'message' => 'Mail could not be sent. Mailer Error: ' . $mail->ErrorInfo]);
+        // Log the error instead of displaying it
+        error_log('Mail could not be sent. Mailer Error: ' . $mail->ErrorInfo);
+        echo json_encode(['status' => 'error', 'message' => 'Mail could not be sent.']);
     }
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Invalid request method.']);

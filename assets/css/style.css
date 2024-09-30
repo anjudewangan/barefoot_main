@@ -4850,6 +4850,7 @@ label {
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 18px;
+  width: 100%;
 }
 
 .input::placeholder,
@@ -5401,7 +5402,7 @@ label {
 
 .quick-timetable .timetable-week .timetable-column .column-content .timetable-item .timetable-title h4 {
   font-size: 14px;
-  line-height: 13px;
+  line-height: 15px;
   color: #171717;
   font-weight: 600;
   margin: 0 0 3px 0;
@@ -5409,7 +5410,8 @@ label {
 }
 
 .quick-timetable .timetable-week .timetable-column .column-content .timetable-item .timetable-time {
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 15px;
 }
 
 .quick-timetable .timetable-week .timetable-column .axis-item {
@@ -5868,7 +5870,7 @@ label {
   }
 
   #qr-popup {
-    top: 100px !important;
+    top: 20% !important;
     left: 10% !important;
   }
 
@@ -5893,6 +5895,9 @@ label {
     padding: 15px
   }
 
+  .form-container {
+    display: block !important;
+  }
 }
 
 #Contact .contact-detail-div .contact-icon {
@@ -6029,7 +6034,7 @@ label {
   display: none;
   position: fixed;
   top: 22%;
-  left: 42%;
+  left: 38%;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
@@ -6043,12 +6048,12 @@ label {
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  width: 300px;
+  width: 400px;
 }
 
 #qr-popup div img {
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  height: 100%;
 }
 
 #close-popup {
@@ -6117,7 +6122,7 @@ label {
 }
 
 .quick-timetable .timetable-list .timetable-row .row-content .timetable-title {
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .quick-timetable .timetable-list .timetable-row .row-content .timetable-title .timetable-color {
@@ -6137,7 +6142,6 @@ label {
 
 .quick-timetable .timetable-list .timetable-row .row-content .timetable-title .timetable-course {
   font-weight: 600;
-  margin-right: 5px;
 }
 
 .quick-timetable .timetable-list .timetable-row .row-content .timetable-title .timetable-trainer {
@@ -6262,4 +6266,15 @@ label {
 
 .heading-space {
   display: none;
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+}
+
+.w-100 {
+  width: 100%;
 }

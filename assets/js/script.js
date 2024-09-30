@@ -109,10 +109,88 @@ $(document).ready(function () {
         activateTabRes("#self-defence-res");
     });
 
-    // Register Form submission
+
+    // Existing Variables
+    var selectedCourse = '';
+    var selectedPaymentMethod = '';
+    var selectedPaymentPlan = '';
+
+    // Handle Course Selection (No longer shows payment options here)
+    $('#select-course').on('change', function () {
+        selectedCourse = $(this).val();
+    });
+
+    // Handle Payment Method Selection and apply discount if it's "online"
+    $('#payment-method').on('change', function () {
+        selectedPaymentMethod = $(this).val();
+
+        // Display the payment-course dropdown
+        var paymentCourse = $('#payment-course');
+        paymentCourse.empty().append('<option value="" selected disabled>Choose Your Payment Plan</option>');
+        paymentCourse.show();
+
+        // Add payment options based on the selected course
+        if (selectedCourse === 'Core Defend (Standard Course): 4 Weeks (8 sessions)') {
+            paymentCourse.append('<option value="Single Payment">Single Payment</option>');
+            paymentCourse.append('<option value="Pay Per Session">Pay Per Session</option>');
+            paymentCourse.append('<option value="Discounted Group of 3">Discounted Group of 3</option>');
+        } else if (selectedCourse === 'Total Defend (Extended Course): 8 Weeks (4 sessions)') {
+            paymentCourse.append('<option value="Single Payment">Single Payment</option>');
+            paymentCourse.append('<option value="Pay Per Session">Pay Per Session</option>');
+            paymentCourse.append('<option value="Discounted Group of 3">Discounted Group of 3</option>');
+        } else if (selectedCourse === 'Trial Class (1 Session)') {
+            paymentCourse.append('<option value="Single Session Payment">Single Session Payment</option>');
+        }
+    });
+
+    // Handle Payment Course Selection and display the popup with the QR code
+    $('#payment-course').on('change', function () {
+        selectedPaymentPlan = $(this).val();
+        var qrCodeImg = $('#qr-code-img');
+        var qrPopup = $('#qr-popup');
+
+        // Check if the selected payment method is "online"
+        if (selectedPaymentMethod === 'Online Payment (Get 10% discount)') {
+            // Show the popup based on the selected course and payment plan
+            if (selectedCourse === 'Core Defend (Standard Course): 4 Weeks (8 sessions)') {
+                if (selectedPaymentPlan === 'Single Payment') {
+                    qrCodeImg.attr('src', './assets/images/register/core-single-payment-qr.webp');
+                } else if (selectedPaymentPlan === 'Pay Per Session') {
+                    qrCodeImg.attr('src', './assets/images/register/core-session-payment-qr.webp');
+                } else if (selectedPaymentPlan === 'Discounted Group of 3') {
+                    qrCodeImg.attr('src', './assets/images/register/core-group-payment-qr.webp');
+                }
+            } else if (selectedCourse === 'Total Defend (Extended Course): 8 Weeks (4 sessions)') {
+                if (selectedPaymentPlan === 'Single Payment') {
+                    qrCodeImg.attr('src', './assets/images/register/total-single-payment-qr.webp');
+                } else if (selectedPaymentPlan === 'Pay Per Session') {
+                    qrCodeImg.attr('src', './assets/images/register/core-session-payment-qr.webp');
+                } else if (selectedPaymentPlan === 'Discounted Group of 3') {
+                    qrCodeImg.attr('src', './assets/images/register/total-group-payment-qr.webp');
+                }
+            } else if (selectedCourse === 'Trial Class (1 Session)') {
+                if (selectedPaymentPlan === 'Single Session Payment') {
+                    qrCodeImg.attr('src', './assets/images/register/core-session-payment-qr.webp');
+                }
+            }
+
+            // Show the QR popup
+            qrPopup.show();
+        }
+    });
+
+
+    // Close the QR popup
+    $('#close-popup').on('click', function () {
+        $('#qr-popup').hide();
+    });
+
+    // Hide QR popup initially
+    $('#qr-popup').hide();
+
+    // Payment Form submission
     document.getElementById('Register-form').addEventListener('submit', function (event) {
         event.preventDefault();
-
         const form = event.target;
         const formData = new FormData(form);
 
@@ -141,121 +219,6 @@ $(document).ready(function () {
                 formContainer.style.display = 'none';
                 errorMessage.style.display = 'block';
             });
-    });
-
-    // Contact Form submission
-    document.getElementById('Contact-form').addEventListener('submit', function (event) {
-        event.preventDefault();
-        const form = event.target;
-        const formData = new FormData(form);
-
-        const successMessage = document.querySelector('.success-message-contact-form');
-        const errorMessage = document.querySelector('.fail-message-contact-form');
-        const formContainer = document.getElementById('Contact-form');
-
-        successMessage.style.display = 'none';
-        errorMessage.style.display = 'none';
-
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    formContainer.style.display = 'none';
-                    successMessage.style.display = 'block';
-                } else {
-                    errorMessage.style.display = 'block';
-                }
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-                formContainer.style.display = 'none';
-                errorMessage.style.display = 'block';
-            });
-    });
-
-
-    // Register Form
-    var selectedCourse = '';
-    var selectedPayment = '';
-    var selectedDiscount = '';
-
-    // Handle Course Selection and Payment Plan Population
-    $('#select-course').on('change', function () {
-        selectedCourse = $(this).val();
-        var paymentCourse = $('#payment-course');
-        paymentCourse.empty().append('<option value="" selected disabled>Choose Your Payment Plan</option>');
-        paymentCourse.show();
-
-        // For Core Defend
-        if (selectedCourse === 'core') {
-            paymentCourse.append('<option value="single">Single Payment</option>');
-            paymentCourse.append('<option value="session">Pay Per Session</option>');
-            paymentCourse.append('<option value="group">Discounted Group of 3</option>');
-        }
-        // For Total Defend
-        else if (selectedCourse === 'total') {
-            paymentCourse.append('<option value="single">Single Payment</option>');
-            paymentCourse.append('<option value="session">Pay Per Session</option>');
-            paymentCourse.append('<option value="group">Discounted Group of 3</option>');
-        }
-        // For Trial Class
-        else if (selectedCourse === 'trial') {
-            paymentCourse.append('<option value="single-session">Single Session Payment</option>');
-        }
-    });
-
-
-    // Handle Payment Course Selection and Display QR Code
-    $('#payment-course').on('change', function () {
-        selectedPayment = $(this).val();
-        var qrCodeImg = $('#qr-code-img');
-
-        // For Core Defend
-        if (selectedCourse === 'core') {
-            if (selectedPayment === 'single') {
-                qrCodeImg.attr('src', './assets/images/register/core-single-payment-qr.webp');
-            } else if (selectedPayment === 'session') {
-                qrCodeImg.attr('src', './assets/images/register/core-session-payment-qr.webp');
-            } else if (selectedPayment === 'group') {
-                qrCodeImg.attr('src', './assets/images/register/core-group-payment-qr.webp');
-            }
-        }
-        // For Total Defend
-        else if (selectedCourse === 'total') {
-            if (selectedPayment === 'single') {
-                qrCodeImg.attr('src', './assets/images/register/total-single-payment-qr.webp');
-            } else if (selectedPayment === 'session') {
-                qrCodeImg.attr('src', './assets/images/register/core-session-payment-qr.webp');
-            } else if (selectedPayment === 'group') {
-                qrCodeImg.attr('src', './assets/images/register/total-group-payment-qr.webp');
-            }
-        }
-        // For Trial Class (only one payment option)
-        else if (selectedCourse === 'trial' && selectedPayment === 'single-session') {
-            qrCodeImg.attr('src', './assets/images/register/trial-single-session-qr.webp');
-        }
-
-        // Do not show the popup here, will be handled based on discount selection
-    });
-
-    // Handle Discount Selection (Popup will open for 10% Discount only)
-    $('#payment-method').on('change', function () {
-        selectedDiscount = $(this).val();
-
-        // Open popup only if "Online Payment (Get 10% discount)" is selected
-        if (selectedDiscount === 'online') {
-            $('#qr-popup').fadeIn(); // Show the popup with QR code
-        } else {
-            $('#qr-popup').fadeOut(); // Hide the popup if other options are selected
-        }
-    });
-
-    // Close the QR popup
-    $('#close-popup').on('click', function () {
-        $('#qr-popup').fadeOut();
     });
 
 });
@@ -11670,7 +11633,7 @@ __p+='`),
  * @license MIT
  */
 /*! Bundled license information:
-
+ 
 timm/lib/timm.js:
   (*!
    * Timm

@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p><strong>Gender:</strong> $gender</p>
                     <p><strong>Have you attended any self-defense classes before?:</strong> $attendClass</p>
                     <p><strong>How did you hear about us?:</strong> $aboutUs</p>
-                      <p><strong>Your Course:</strong> $course</p>
+                    <p><strong>Your Course:</strong> $course</p>
                     <p><strong>Preferred Payment Method:</strong> $paymentMethod</p>
                     <p><strong>Payment Plan:</strong> $paymentPlan</p>
                 </body>
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </html>
             ";
         }
-
+ 
         if ($mail->send()) {
             echo json_encode(['status' => 'success']);
         } else {

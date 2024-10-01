@@ -155,8 +155,10 @@
                                         <option value="Referral">Referral</option>
                                         <option value="Others">Others</option>
                                     </select>
-                                    <input type="submit" class="common-button w-button" value="Register Now" onclick="showPaymentDiv();">
+                                    <input type="button" class="common-button w-button" value="Register Now"
+                                        onclick="showPaymentDiv();">
                                 </div>
+                                <div id="error-message" style="color: red; display: none; margin-top: 15px;"></div>
 
                                 <div id="Payment-div" style="display: none;">
                                     <label for="select-course">Select Your Course</label>
@@ -345,12 +347,31 @@
     </script>
     <script src="./assets/js/script.js" type="text/javascript"></script>
     <script>
-            function showPaymentDiv() {
-        // Hide Register-div and show Payment-div
-        document.getElementById('Register-div').style.display = 'none'; // Optionally hide the register div
-        document.getElementById('Payment-div').style.display = 'block'; // Show the payment div
-    }
+        function showPaymentDiv() {
+            const errorMessageDiv = document.getElementById("error-message");
+
+            const fullName = document.getElementById("Full-Name").value.trim();
+            const age = document.getElementById("Age").value.trim();
+            const email = document.getElementById("Email-Address").value.trim();
+            const contactNumber = document.getElementById("Contact-Number").value.trim();
+            const gender = document.getElementById("Gender").value;
+            const location = document.getElementById("Location").value.trim();
+            const attendClass = document.getElementById("attend-class").value;
+            const aboutUs = document.getElementById("about-us").value;
+
+            if (fullName === "" || age === "" || email === "" || contactNumber === "" || gender === "" || location === "" || attendClass === "" || aboutUs === "") {
+                errorMessageDiv.style.display = "block";
+                errorMessageDiv.textContent = "Please fill out all required fields before proceeding to payment.";
+                return;  
+            }
+
+            errorMessageDiv.style.display = "none";
+
+            document.getElementById('Register-div').style.display = 'none'; 
+            document.getElementById('Payment-div').style.display = 'block'; 
+        }
     </script>
+
 </body>
 
 </html>

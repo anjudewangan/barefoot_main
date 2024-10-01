@@ -4042,7 +4042,7 @@ textarea.w-select {
     bottom: 235px;
   }
 
-  #Timetable .padding-large-global.padding-top-large-xl.padding-bottom-medium {
+  #Schedule .padding-large-global.padding-top-large-xl.padding-bottom-medium {
     padding-top: 2rem;
   }
 
@@ -4723,7 +4723,8 @@ textarea.w-select {
   -webkit-text-fill-color: transparent;
 }
 
-.text-center {
+.text-center,
+#Schedule .cta-container {
   text-align: center;
 }
 
@@ -4826,7 +4827,7 @@ input[type=number]::-webkit-inner-spin-button {
   border: 1px solid var(--white-900);
   color: var(--white);
   background-color: #0000;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   padding-top: 25px;
   padding-bottom: 25px;
   font-size: 18px;
@@ -4846,7 +4847,7 @@ label {
   border: 1px solid var(--white-900);
   color: var(--white);
   background-color: #0000;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 18px;
@@ -5882,7 +5883,7 @@ label {
     display: block !important;
   }
 
-  #Timetable,
+  #Schedule,
   #Price {
     padding-top: 0;
   }

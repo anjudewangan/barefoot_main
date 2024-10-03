@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    
+
+
     // tap top
     $('#tap-top').on('click', function () {
         $("html, body").animate({
@@ -106,118 +107,6 @@ $(document).ready(function () {
         $(".all-events-timetable-res").hide();
 
         activateTabRes("#self-defence-res");
-    });
-
-
-    // Existing Variables
-    var selectedCourse = '';
-    var selectedPaymentMethod = '';
-    var selectedPaymentPlan = '';
-
-    // Handle Course Selection (No longer shows payment options here)
-    $('#select-course').on('change', function () {
-        selectedCourse = $(this).val();
-    });
-
-    // Handle Payment Method Selection and apply discount if it's "online"
-    $('#payment-method').on('change', function () {
-        selectedPaymentMethod = $(this).val();
-
-        // Display the payment-course dropdown
-        var paymentCourse = $('#payment-course');
-        paymentCourse.empty().append('<option value="" selected disabled>Choose Your Payment Plan</option>');
-        paymentCourse.show();
-
-        // Add payment options based on the selected course
-        if (selectedCourse === 'Core Defend (Standard Course): 4 Weeks (8 sessions)') {
-            paymentCourse.append('<option value="Single Payment">Single Payment</option>');
-            paymentCourse.append('<option value="Pay Per Session">Pay Per Session</option>');
-            paymentCourse.append('<option value="Discounted Group of 3">Discounted Group of 3</option>');
-        } else if (selectedCourse === 'Total Defend (Extended Course): 8 Weeks (4 sessions)') {
-            paymentCourse.append('<option value="Single Payment">Single Payment</option>');
-            paymentCourse.append('<option value="Pay Per Session">Pay Per Session</option>');
-            paymentCourse.append('<option value="Discounted Group of 3">Discounted Group of 3</option>');
-        } else if (selectedCourse === 'Trial Class (1 Session)') {
-            paymentCourse.append('<option value="Single Session Payment">Single Session Payment</option>');
-        }
-    });
-
-    // Handle Payment Course Selection and display the popup with the QR code
-    $('#payment-course').on('change', function () {
-        selectedPaymentPlan = $(this).val();
-        var qrCodeImg = $('#qr-code-img');
-        var qrPopup = $('#qr-popup');
-
-        // Check if the selected payment method is "online"
-        if (selectedPaymentMethod === 'Online Payment (Get 10% discount)') {
-            // Show the popup based on the selected course and payment plan
-            if (selectedCourse === 'Core Defend (Standard Course): 4 Weeks (8 sessions)') {
-                if (selectedPaymentPlan === 'Single Payment') {
-                    qrCodeImg.attr('src', './assets/images/register/core-single-payment-qr.webp');
-                } else if (selectedPaymentPlan === 'Pay Per Session') {
-                    qrCodeImg.attr('src', './assets/images/register/core-session-payment-qr.webp');
-                } else if (selectedPaymentPlan === 'Discounted Group of 3') {
-                    qrCodeImg.attr('src', './assets/images/register/core-group-payment-qr.webp');
-                }
-            } else if (selectedCourse === 'Total Defend (Extended Course): 8 Weeks (4 sessions)') {
-                if (selectedPaymentPlan === 'Single Payment') {
-                    qrCodeImg.attr('src', './assets/images/register/total-single-payment-qr.webp');
-                } else if (selectedPaymentPlan === 'Pay Per Session') {
-                    qrCodeImg.attr('src', './assets/images/register/core-session-payment-qr.webp');
-                } else if (selectedPaymentPlan === 'Discounted Group of 3') {
-                    qrCodeImg.attr('src', './assets/images/register/total-group-payment-qr.webp');
-                }
-            } else if (selectedCourse === 'Trial Class (1 Session)') {
-                if (selectedPaymentPlan === 'Single Session Payment') {
-                    qrCodeImg.attr('src', './assets/images/register/core-session-payment-qr.webp');
-                }
-            }
-
-            // Show the QR popup
-            qrPopup.show();
-        }
-    });
-
-
-    // Close the QR popup
-    $('#close-popup').on('click', function () {
-        $('#qr-popup').hide();
-    });
-
-    // Hide QR popup initially
-    $('#qr-popup').hide();
-
-    // Payment Form submission
-    document.getElementById('Register-form').addEventListener('submit', function (event) {
-        event.preventDefault();
-        const form = event.target;
-        const formData = new FormData(form);
-
-        const successMessage = document.querySelector('.success-message-register-form');
-        const errorMessage = document.querySelector('.fail-message-register-form');
-        const formContainer = document.getElementById('Register-form');
-
-        successMessage.style.display = 'none';
-        errorMessage.style.display = 'none';
-
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    formContainer.style.display = 'none';
-                    successMessage.style.display = 'block';
-                } else {
-                    errorMessage.style.display = 'block';
-                }
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-                formContainer.style.display = 'none';
-                errorMessage.style.display = 'block';
-            });
     });
 
 });
@@ -11617,7 +11506,36 @@ __p+='`),
 }
 )();
 
-
+/*!
+ * tram.js v0.8.2-global
+ * Cross-browser CSS3 transitions in JavaScript
+ * https://github.com/bkwld/tram
+ * MIT License
+ */
+/*!
+ * Webflow._ (aka) Underscore.js 1.6.0 (custom build)
+ *
+ * http://underscorejs.org
+ * (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Underscore may be freely distributed under the MIT license.
+ * @license MIT
+ */
+/*! Bundled license information:
+ 
+timm/lib/timm.js:
+  (*!
+   * Timm
+   *
+   * Immutability helpers with fast reads and acceptable writes.
+   *
+   * @copyright Guillermo Grau Panea 2016
+   * @license MIT
+   *)
+*/
+/**
+ * ----------------------------------------------------------------------
+ * Webflow: Interactions 2.0: Init
+ */
 Webflow.require('ix2').init({
     "events": {
         "e": {

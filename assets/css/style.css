@@ -4723,8 +4723,7 @@ textarea.w-select {
   -webkit-text-fill-color: transparent;
 }
 
-.text-center,
-#Schedule .cta-container {
+.text-center {
   text-align: center;
 }
 
@@ -4827,7 +4826,7 @@ input[type=number]::-webkit-inner-spin-button {
   border: 1px solid var(--white-900);
   color: var(--white);
   background-color: #0000;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
   padding-top: 25px;
   padding-bottom: 25px;
   font-size: 18px;
@@ -4847,7 +4846,7 @@ label {
   border: 1px solid var(--white-900);
   color: var(--white);
   background-color: #0000;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 18px;
@@ -5706,8 +5705,8 @@ label {
   }
 }
 
-#Timetable .heading-h2,
-#Timetable .text-medium.text-color-white,
+#Schedule .heading-h2,
+#Schedule .text-medium.text-color-white,
 #Price .text-medium.text-color-white,
 #Price .heading-h2,
 #FAQ .text-medium.text-color-white,
@@ -5870,11 +5869,6 @@ label {
     font-size: 20px;
   }
 
-  #qr-popup {
-    top: 20% !important;
-    left: 10% !important;
-  }
-
   #weekly-view {
     display: none !important;
   }
@@ -5923,7 +5917,7 @@ label {
   color: var(--dark);
 }
 
-#Timetable .cta-container {
+#Schedule .cta-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6029,55 +6023,6 @@ label {
     transform: scale(1.5);
     opacity: 0;
   }
-}
-
-#qr-popup {
-  display: none;
-  position: fixed;
-  top: 22%;
-  left: 38%;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-}
-
-#qr-popup div {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  width: 400px;
-}
-
-#qr-popup div img {
-  width: 100%;
-  height: 100%;
-}
-
-#close-popup {
-  z-index: 2;
-  background-color: var(--purple);
-  font-family: var(--body-font);
-  flex: 0 auto;
-  order: 0;
-  align-self: flex-start;
-  transition: padding .3s, background-color .3s;
-  display: inline-flex;
-  position: relative;
-  transform: skew(-15deg);
-  padding: 20px 44px;
-  font-size: 2em;
-  color: var(--white);
-}
-
-#close-popup:hover {
-  background-color: var(--dark-purple);
-  padding-left: 60px;
-  padding-right: 60px;
-  color: var(--white);
 }
 
 /* Timetable List */
@@ -6278,4 +6223,72 @@ label {
 
 .w-100 {
   width: 100%;
+}
+
+.All-loader {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 4px solid #543213;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+.loader-container {
+  position: absolute;
+  color: #f3f3f3;
+  font-size: 40px;
+  top: 40%;
+  left: 45%;
+}
+
+/* Tooltip container */
+.stpslctcat {
+  position: relative;
+}
+
+.toltipFrm {
+  position: absolute;
+  bottom: -8px;
+  padding: 8px;
+  color: #fff;
+  text-align: center;
+  z-index: 99;
+  width: 100%;
+  background-color: #F37B06;
+}
+
+/* Pure CSS arrow (up arrow) */
+.arrow-up {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 0;
+  width: 0;
+  border: none;
+  border-bottom: 10px solid #F37B06;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+/* Tooltip with specific styles */
+.stpstoltipfrm {
+  border-radius: 5px;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
 }

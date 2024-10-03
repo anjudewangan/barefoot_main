@@ -7,8 +7,8 @@ use Razorpay\Api\Api;
 use PHPMailer\PHPMailer\PHPMailer;
 
 //========Demo Key===============================
-$keyId = 'rzp_test_2SIUZYi7h8eVQY';
-$keySecret = 'OaC2hNczZGmSLbbdzsJGAK7a';
+$keyId = 'rzp_live_bdkbXSotKJHa7u';
+$keySecret = 'GVFyCsq9bpJA0HdbMIJxfrP6';
 
 $api = new Api($keyId, $keySecret);
 

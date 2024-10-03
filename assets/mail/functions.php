@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->Port       = 587;
 
         $mail->setFrom('barefootraipur@gmail.com', 'Barefoot');
-        $mail->addAddress('barefootraipur@gmail.com');
+        $mail->addAddress('barefootraipur@gmail.com', 'Barefoot');
         $mail->CharSet = 'utf-8';
 
         // Step1 ------- Handle registration form submission
@@ -83,8 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($_POST['payment_method'] == 'online') {
 
                     //========Demo Key===============================
-                    $keyId = 'rzp_test_2SIUZYi7h8eVQY';
-                    $keySecret = 'OaC2hNczZGmSLbbdzsJGAK7a';
+                    $keyId = 'rzp_live_bdkbXSotKJHa7u';
+                    $keySecret = 'GVFyCsq9bpJA0HdbMIJxfrP6';
 
                     $api = new Api($keyId, $keySecret);
 
